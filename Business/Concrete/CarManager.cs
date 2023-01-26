@@ -11,9 +11,9 @@ namespace Business.Concrete
     {
 
         ICarDal _carDal;
-        public CarManager(ICarDal _carDal)
+        public CarManager(ICarDal carDal)
         {
-            this._carDal = _carDal;
+           _carDal = carDal;
         }
         public List<Car> GetAll()
         {

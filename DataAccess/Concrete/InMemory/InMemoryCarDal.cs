@@ -22,7 +22,10 @@ namespace DataAccess.Concrete.InMemory
                 new Car{Id=5,BrandId=1,ColorId=3,ModelYear="2020",DailyPrice=300,Description="Renault Clio Siyah renk",}
                 
             };
+
+            
         }
+        
         public void Add(Car car)
         {
             _cars.Add(car);
@@ -44,10 +47,7 @@ namespace DataAccess.Concrete.InMemory
             return _cars.Where(c => c.Id == id).ToList();
         }
 
-        public List<Car> GetById()
-        {
-            throw new NotImplementedException();
-        }
+     
 
         public void Update(Car car)
         {

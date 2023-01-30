@@ -15,12 +15,42 @@ namespace Business.Concrete
         {
            _carDal = carDal;
         }
-        public List<Car> GetAll()
+
+        public void Add(Car entity)
         {
+            if (entity.Description.Length>=2 && entity.DailyPrice>0)
+            {
+                _carDal.Add(entity);
+            }
+            else
+            {
+                throw new Exception("ARABA ÖZELLİKLERİ YANLIŞ");
+            }
+        }
+
+        public void Delete(Car entity)
+        {
+            _carDal.Delete(entity);
+        }
+
+        public List<Car> GetAll()
+        { 
             return _carDal.GetAll();
         }
 
+        public List<Car> GetByBrandId()
+        {
+            return _carDal.GetByBrandId();
+        }
 
+        public List<Car> GetByColorId()
+        {
+            return _carDal.GetByColorId();
+        }
 
+        public void Update(Car entity)
+        {
+             _carDal.Update(entity);
+        }
     }
 }

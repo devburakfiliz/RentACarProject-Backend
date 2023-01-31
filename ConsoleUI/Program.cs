@@ -12,6 +12,10 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
+            foreach (var car in carManager.GetCarDetails())
+            {
+                Console.WriteLine(car.CarName+" / "+car.ColorName+" / "+ car.BrandName+" / "+car.DailyPrice);
+            }
 
             //carManager.Add(new Car() {
 
@@ -23,26 +27,36 @@ namespace ConsoleUI
 
             //});
 
-            carManager.Update(new Car() {
-                Id=1,
-                Description="Volvo",
-                BrandId=5,
-                DailyPrice=500,
-                ColorId=2,
-                ModelYear="2021"
-            });
-            carManager.Delete(new Car()
-            {
-                Id = 1
-
-            });
-
+            //UpdateCar(carManager);
+            //DeleteCar(carManager);
 
             foreach (var car in carManager.GetAll())
             {
                 Console.WriteLine(car.Description);
             }
 
+        }
+
+        private static void UpdateCar(CarManager carManager)
+        {
+            carManager.Update(new Car()
+            {
+                Id = 1,
+                Description = "Volvo",
+                BrandId = 5,
+                DailyPrice = 500,
+                ColorId = 2,
+                ModelYear = "2021"
+            });
+        }
+
+        private static void DeleteCar(CarManager carManager)
+        {
+            carManager.Delete(new Car()
+            {
+                Id = 5
+
+            });
         }
     }
 }

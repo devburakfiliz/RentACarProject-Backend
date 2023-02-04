@@ -29,34 +29,54 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CarAdded);
         }
 
-        public void Delete(Car entity)
+        public IResult Delete(Car entity)
         {
             _carDal.Delete(entity);
+            return new SuccessResult( Messages.Deleted);
         }
 
-        public List<Car> GetAll()
-        { 
-            return _carDal.GetAll();
-        }
-
-        public List<Car> GetByBrandId()
+        public IDataResult <List<Car>> GetAll()
         {
-            return _carDal.GetByBrandId();
+            if (DateTime.Now.Hour==23)
+            {
+             
+                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
+            }
+            else
+            {
+               
+                return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
+            }
         }
 
-        public List<Car> GetByColorId()
+        public IDataResult <List<Car>> GetByBrandId()
         {
-            return _carDal.GetByColorId();
+            return new SuccessDataResult<List<Car>>(_carDal.GetByBrandId(), Messages.CarsListed);
         }
 
-        public List<CarDetailDto> GetCarDetails()
+        public IDataResult< List<Car>> GetByColorId()
         {
-            return _carDal.GetCarDetails();
+            return new SuccessDataResult<List<Car>>(_carDal.GetByColorId(), Messages.CarsListed);
+
         }
 
-        public void Update(Car entity)
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
+        {
+            if (DateTime.Now.Hour==20)
+            {
+                return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.CarsListed);
+
+            }
+
+            return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintenanceTime);
+
+            
+        }
+
+        public IResult Update(Car entity)
         {
              _carDal.Update(entity);
+            return new SuccessResult(Messages.Updated);
         }
     }
 }

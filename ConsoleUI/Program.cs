@@ -14,7 +14,7 @@ namespace ConsoleUI
 
             //GetDetails(carManager);
             //AddCar(carManager);
-            //UpdateCar(carManager);
+            UpdateCar(carManager);
             //DeleteCar(carManager);
 
 
@@ -22,9 +22,19 @@ namespace ConsoleUI
 
         private static void GetDetails(CarManager carManager)
         {
-            foreach (var car in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+            if (result.Success == true)
             {
-                Console.WriteLine(car.CarName + " / " + car.ColorName + " / " + car.BrandName + " / " + car.DailyPrice);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(result.Message);
+                    Console.WriteLine(car.CarName + " / " + car.BrandName);
+                }
+            }
+
+            else
+            {
+                Console.WriteLine(result.Message);
             }
         }
 
@@ -47,15 +57,16 @@ namespace ConsoleUI
 
         private static void UpdateCar(CarManager carManager)
         {
-            carManager.Update(new Car()
+            var result =carManager.Update(new Car()
             {
-                Id = 1,
+                Id = 4,
                 Description = "Volvo",
                 BrandId = 5,
                 DailyPrice = 500,
                 ColorId = 2,
                 ModelYear = "2021"
             });
+            Console.WriteLine(result.Message);
         }
 
         private static void DeleteCar(CarManager carManager)

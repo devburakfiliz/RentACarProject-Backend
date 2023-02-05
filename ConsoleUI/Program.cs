@@ -10,12 +10,27 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            UserManager userManager = new UserManager(new EfUserDal());
             CarManager carManager = new CarManager(new EfCarDal());
 
             //GetDetails(carManager);
             //AddCar(carManager);
-            UpdateCar(carManager);
+            //UpdateCar(carManager);
             //DeleteCar(carManager);
+
+
+            var result = userManager.Add(new User()
+            {
+
+
+                Name="Burak",
+                LastName="Filiz",
+                Email="dev.burakfiliz@gmail.com",
+                Password="h2145bew"
+
+
+            });
+            Console.WriteLine(result.Message);
 
 
         }

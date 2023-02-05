@@ -12,27 +12,46 @@ namespace ConsoleUI
         {
             UserManager userManager = new UserManager(new EfUserDal());
             CarManager carManager = new CarManager(new EfCarDal());
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
             //GetDetails(carManager);
             //AddCar(carManager);
             //UpdateCar(carManager);
             //DeleteCar(carManager);
+            // AddUser(userManager);
 
-
-            var result = userManager.Add(new User()
+            var result = rentalManager.Add(new Rental()
             {
 
 
-                Name="Burak",
-                LastName="Filiz",
-                Email="dev.burakfiliz@gmail.com",
-                Password="h2145bew"
+                CarId=1007,
+                CustomerId=2,
+                RentDate=DateTime.Now
+                
+                
+              
 
 
             });
             Console.WriteLine(result.Message);
 
 
+        }
+
+        private static void AddUser(UserManager userManager)
+        {
+            var result = userManager.Add(new User()
+            {
+
+
+                Name = "Burak",
+                LastName = "Filiz",
+                Email = "dev.burakfiliz@gmail.com",
+                Password = "h2145bew"
+
+
+            });
+            Console.WriteLine(result.Message);
         }
 
         private static void GetDetails(CarManager carManager)

@@ -10,6 +10,7 @@ namespace Core.DataAccess
     
     {
         List<T> GetAll(Expression<Func<T, bool>> filter = null);
+        T Get(Expression<Func<T, bool>> filter);
         List<T> GetByBrandId(Expression<Func<T, bool>> filter = null);
         List<T> GetByColorId(Expression<Func<T, bool>> filter = null);
         T GetById(Expression<Func<T, bool>> filter);

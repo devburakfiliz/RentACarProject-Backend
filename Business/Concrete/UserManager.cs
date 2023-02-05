@@ -18,10 +18,6 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
-
-
-
-
         public IResult Add(User entity)
         {
             _userDal.Add(entity);
@@ -31,27 +27,20 @@ namespace Business.Concrete
         public IResult Delete(User entity)
         {
             _userDal.Delete(entity);
-            return new SuccessResult(Messages.Deleted);
+            return new SuccessResult(Messages.UserDeleted);
         }
 
         public IDataResult<List<User>> GetAll()
         {
-            if (DateTime.Now.Hour == 20)
-            {
 
-                return new ErrorDataResult<List<User>>(Messages.MaintenanceTime);
-            }
-            else
-            {
-
-                return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.CarsListed);
-            }
+                return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.UsersListed);
+           
         }
 
         public IResult Update(User entity)
         {
             _userDal.Update(entity);
-            return new SuccessResult(Messages.Updated);
+            return new SuccessResult(Messages.UserUpdated);
         }
     }
 }

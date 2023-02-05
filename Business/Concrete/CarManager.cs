@@ -23,7 +23,7 @@ namespace Business.Concrete
         {
             if (entity.Description.Length<3)
             {
-                return new ErrorResult(Messages.CarNameInValid);
+                return new ErrorResult(Messages.CarDetailsInvalid);
             }
             _carDal.Add(entity);
             return new SuccessResult(Messages.CarAdded);
@@ -32,21 +32,14 @@ namespace Business.Concrete
         public IResult Delete(Car entity)
         {
             _carDal.Delete(entity);
-            return new SuccessResult( Messages.Deleted);
+            return new SuccessResult( Messages.CarDeleted);
         }
 
         public IDataResult <List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour==20)
-            {
-             
-                return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
-            }
-            else
-            {
-               
-                return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
-            }
+      
+               return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
+           
         }
 
         public IDataResult <List<Car>> GetByBrandId()
@@ -62,21 +55,15 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            if (DateTime.Now.Hour==9)
-            {
+          
                 return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.CarsListed);
 
-            }
-
-            return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintenanceTime);
-
-            
         }
 
         public IResult Update(Car entity)
         {
              _carDal.Update(entity);
-            return new SuccessResult(Messages.Updated);
+            return new SuccessResult(Messages.CarUpdated);
         }
     }
 }

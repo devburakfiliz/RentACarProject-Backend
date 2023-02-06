@@ -24,7 +24,7 @@ namespace ConsoleUI
             {
 
 
-                CarId=1007,
+                CarId=1008,
                 CustomerId=2,
                 RentDate=DateTime.Now
                 

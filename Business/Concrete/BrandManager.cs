@@ -15,9 +15,9 @@ namespace Business.Concrete
         
 
             IBrandDal _brandDal;
-            public BrandManager(IBrandDal userDal)
+            public BrandManager(IBrandDal brandDal)
             {
-                _brandDal = userDal;
+                _brandDal = brandDal;
             }
 
 
@@ -38,16 +38,16 @@ namespace Business.Concrete
 
             public IDataResult<List<Brand>> GetAll()
             {
-                if (DateTime.Now.Hour == 20)
-                {
+                //if (DateTime.Now.Hour == 20)
+                //{
 
-                    return new ErrorDataResult<List<Brand>>(Messages.BrandsListed);
-                }
-                else
-                {
+                //    return new ErrorDataResult<List<Brand>>(Messages.BrandsListed);
+                //}
+                //else
+                //{
 
                     return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandsListed);
-                }
+                //}
             }
 
             public IResult Update(Brand entity)

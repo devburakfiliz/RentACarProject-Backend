@@ -12,6 +12,7 @@ namespace ConsoleUI
         {
             UserManager userManager = new UserManager(new EfUserDal());
             CarManager carManager = new CarManager(new EfCarDal());
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
             //GetDetails(carManager);
@@ -20,21 +21,36 @@ namespace ConsoleUI
             //DeleteCar(carManager);
             // AddUser(userManager);
 
-            var result = rentalManager.Add(new Rental()
+            //var result = rentalManager.Add(new Rental()
+            //{
+
+
+            //    CarId=1008,
+            //    CustomerId=2,
+            //    RentDate=DateTime.Now
+
+
+
+
+
+            //});
+
+
+
+            var result = brandManager.GetAll();
+            if (result.Success == true)
             {
+                foreach (var brand in result.Data)
+                {
+                    Console.WriteLine(result.Message);
+                    Console.WriteLine(brand.Name );
+                }
+            }
 
-
-                CarId=1008,
-                CustomerId=2,
-                RentDate=DateTime.Now
-                
-                
-              
-
-
-            });
-            Console.WriteLine(result.Message);
-
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
 
         }
 

@@ -52,6 +52,7 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult Get()
         {
+
             var result = _brandService.GetAll();
             if (result.Success)
             {

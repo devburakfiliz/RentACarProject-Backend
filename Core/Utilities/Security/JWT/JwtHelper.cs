@@ -1,10 +1,12 @@
 ﻿using Core.Entities.Concrete;
+using Core.Extensions;
 using Core.Utilities.Security.Encryption;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
@@ -12,13 +14,13 @@ namespace Core.Utilities.Security.JWT
 {
     public class JwtHelper : ITokenHelper
     {
-        public IConfiguration Configuration { get; } // Apıdeki appsetingi okumaya yarar microsoftdan gelıyor
-        private TokenOptions _tokenOptions; // appsetingde okunan degerlerı bir neseneye atar
+        public IConfiguration Configuration { get; } 
+        private TokenOptions _tokenOptions; 
         private DateTime _accessTokenExpiration;
-        public JwtHelper(IConfiguration configuration)  // token options alanını okudugumuz yer appsettings deki
+        public JwtHelper(IConfiguration configuration) 
         {
             Configuration = configuration;
-            _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();  //Microsoft.Extensions.Configuration.Binder nuget
+            _tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>(); 
 
         }
         public AccessToken CreateToken(User user, List<OperationClaim> operationClaims)
@@ -58,7 +60,7 @@ namespace Core.Utilities.Security.JWT
             claims.AddNameIdentifier(user.Id.ToString());
             claims.AddEmail(user.Email);
             claims.AddName($"{user.FirstName} {user.LastName}");
-            claims.AddRoles(operationClaims.Select(c => c.Name).ToArray());  //roller
+            claims.AddRoles(operationClaims.Select(c => c.Name).ToArray());  
 
             return claims;
         }

@@ -45,7 +45,7 @@ namespace WebAPI
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();   //using Core.Utilities.Security.JWT;   3.1.12 nuget
 
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)   //3.1.12 nuget
                 .AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters

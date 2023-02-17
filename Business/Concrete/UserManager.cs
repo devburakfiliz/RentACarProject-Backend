@@ -23,13 +23,13 @@ namespace Business.Concrete
         public IResult Add(User entity)
         {
             _userDal.Add(entity);
-            return new SuccessResult(Messages.CarAdded);
+            return new SuccessResult(Messages.UserAdded);
         }
 
         public IResult Delete(User entity)
         {
             _userDal.Delete(entity);
-            return new SuccessResult(Messages.UserAdded);
+            return new SuccessResult(Messages.UserDeleted);
         }
 
         public IDataResult<User> GetById(int id)
@@ -49,15 +49,13 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<User>(Messages.UserNotFound);
             }
-            return new SuccessDataResult<User>(result, Messages.UserListed);
+            return new SuccessDataResult<User>(result, Messages.MailListed);
         }
 
         public List<OperationClaim> GetClaims(User entity)
         {
            return _userDal.GetClaims(entity);
 
-
-     
         }
 
         public IResult Update(User entity)

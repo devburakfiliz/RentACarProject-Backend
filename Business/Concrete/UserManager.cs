@@ -81,6 +81,14 @@ namespace Business.Concrete
             _userDal.Update(user);
             return new SuccessResult(Messages.UserAdded);
         }
+
+
+        public IDataResult<List<User>> GetAll()
+        {
+
+            return new SuccessDataResult<List<User>>(_userDal.GetAll(), Messages.CarsListed);
+
+        }
     }
 
 

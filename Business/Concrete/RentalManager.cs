@@ -47,9 +47,10 @@ namespace Business.Concrete
          
         }
 
-        public IDataResult<List<RentalDto>> Getrentals()
+        public IDataResult<List<RentalDetailDto>> GetRentalDetails()
         {
-            return new SuccessDataResult<List<RentalDto>>(_rentalDal.Getrentals(), Messages.CarsListed);
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(), Messages.CarsListed);
+
         }
 
         public IResult Update(Rental entity)

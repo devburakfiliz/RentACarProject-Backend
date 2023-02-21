@@ -28,4 +28,5 @@ As soon as all conditions are met, the car is added without any problems
 
 ![Ekran görüntüsü_20230219_111601](https://user-images.githubusercontent.com/110422737/219937266-09f9e13f-6efe-4cec-bb9e-b0872bdcbf94.png)
 
-
+Relational database designed
+![Ekran görüntüsü_20230221_114333](https://user-images.githubusercontent.com/110422737/220293471-0069e003-db1e-4584-bd57-124467a50f9b.png)

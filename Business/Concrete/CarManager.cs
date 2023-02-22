@@ -12,6 +12,7 @@ using Entities.DTOs;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -51,15 +52,15 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
-        public IDataResult <List<Car>> GetByBrandId(int id)
+        public IDataResult <List<CarDetailDto>> GetByBrandId(int id)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId== id));
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailsByBrand(id));
         }
 
         [CacheAspect]
-        public IDataResult< List<Car>> GetByColorId(int colorid)
+        public IDataResult< List<CarDetailDto>> GetByColorId(int colorid)
         {
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId ==  colorid));
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(c=>c.ColorId==colorid).ToList());
 
         }
 

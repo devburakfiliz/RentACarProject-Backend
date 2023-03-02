@@ -18,6 +18,9 @@ namespace Entities.DTOs
         public string Description { get; set; }
         public string ImagePath { get; set; }
         public string ModelName { get; set; }
-       
+        public int CustomerId { get; set; }
+   
+
+
     }
 }

@@ -12,6 +12,9 @@ namespace Business.Constants
         public static string CarUpdated = "Araba bilgileri güncellendi.";
         public static string CarsListed = "Arabalar listelendi.";
 
+        public static string CarCanNotRentable = "Bu araba kiralanamaz";
+        public static string CarCanRentable = "Bu araba kiralanabilir";
+
         public static string BrandAdded = "Marka eklendi.";
         public static string BrandUpdated = "Marka güncellendi.";
         public static string BrandDeleted = "Marka silindi.";
@@ -48,5 +51,12 @@ namespace Business.Constants
         public static string ClaimsListed = "Roller Listelendi.";
         public static string MailListed = "Mail listelendi.";
         public static string UserListed = "Kullanıcılar listelendi.";
+
+        public static string PaymentAdded = "Kart eklendi.";
+        public static string PaymentUpdated = "Kart güncellendi.";
+        public static string PaymentDeleted = "Kart silindi.";
+        public static string PaymentListed = "Kart listelendi.";
+        public static string PayIsSuccessfull = "Ödeme Başarılı.";
+        public static string CardInformationIsIncorrect = "Kart Bilgileri Hatalı.";
     }
 }

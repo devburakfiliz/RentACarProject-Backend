@@ -60,5 +60,15 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpPost("pay")]
+        public IActionResult Pay(Payment entity)
+        {
+            var result = _paymentService.Pay(entity);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

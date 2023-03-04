@@ -29,6 +29,16 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpPost("rulesforadding")]
+        public IActionResult RulesForAdding(Rental entity)
+        {
+            var result = _rentalService.RulesForAdding(entity);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
         [HttpPost("delete")]
         public IActionResult Delete(Rental entity)
         {

@@ -15,6 +15,8 @@ namespace Business.Constants
         public static string CarCanNotRentable = "Bu araba kiralanamaz";
         public static string CarCanRentable = "Bu araba kiralanabilir";
 
+        public static string ThisCarIsAlreadyRentedInSelectedDateRange = "Bu araba zaten seçilen tarih aralığında kiralandıBu araba zaten seçilen tarih aralığında kiralandı.";
+
         public static string BrandAdded = "Marka eklendi.";
         public static string BrandUpdated = "Marka güncellendi.";
         public static string BrandDeleted = "Marka silindi.";

@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
                 var result = from r in context.Rentals
                              join cu in context.Customers on r.CustomerId equals cu.Id
                              join u in context.Users on cu.UserId equals u.Id
-                             join c in context.Cars on r.CarId equals c.Id
+                             join c in context.Cars on r.CarId equals c.CarId
                              join b in context.Brands on c.BrandId equals b.Id
                          
                              select new RentalDetailDto
@@ -33,7 +33,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  RentDate = r.RentDate,
                                  ReturnDate = r.ReturnDate,
                                  ImagePath = (from img in context.CarImages
-                                              where img.CarId == c.Id
+                                              where img.CarId == c.CarId
                                               select img.ImagePath).FirstOrDefault(),
                                  DailyPrice = c.DailyPrice,
                                  ModelName=c.ModelName

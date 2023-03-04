@@ -27,7 +27,7 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  CarName = brand.brandName,
                                  
-                                 CarId = car.Id,
+                                 CarId = car.CarId,
                                  BrandId=brand.Id,
                                  ColorId=color.Id,
                                  BrandName = brand.brandName,
@@ -37,8 +37,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  Description = car.Description,
                                  ModelName = car.ModelName,
                                  ImagePath = (from img in context.CarImages
-                                               where img.CarId == car.Id
-                                               select img.ImagePath).FirstOrDefault()
+                                               where img.CarId == car.CarId
+                                              select img.ImagePath).FirstOrDefault()
 
                              };
                 return result.ToList();
@@ -56,7 +56,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new CarDetailDto
                              {
                                  CarName = brand.brandName,
-                                 CarId = car.Id,
+                                 CarId = car.CarId,
                                  BrandId = brand.Id,
                                  ColorId = color.Id,
                                  BrandName = brand.brandName,
@@ -66,7 +66,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  Description = car.Description,
                                  ModelName = car.ModelName,
                                  ImagePath = (from img in context.CarImages
-                                              where img.CarId == car.Id
+                                              where img.CarId == car.CarId
                                               select img.ImagePath).FirstOrDefault()
 
                              };

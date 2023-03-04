@@ -27,8 +27,8 @@ namespace Business.Concrete
         }
 
 
-        [SecuredOperation("car.add,admin")]
-        [ValidationAspect(typeof(CarValidator))]
+        //[SecuredOperation("car.add,admin")]
+        //[ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car entity)
         {
            
@@ -78,7 +78,7 @@ namespace Business.Concrete
         }
         public IDataResult <Car>  GetById(int id)
         {
-            return new SuccessDataResult<Car>(_carDal.GetById(p => p.Id == id));
+            return new SuccessDataResult<Car>(_carDal.GetById(p => p.CarId == id));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetailsById(int carid)
